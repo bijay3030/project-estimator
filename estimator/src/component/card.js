@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import DesktopIcon from "../Assets/deskktop.png";
@@ -8,9 +8,29 @@ import { makeStyles } from '@material-ui/core/styles';
 import FrontendIcon from "../Assets/front-end.png";
 import BackendIcon from "../Assets/backenddd.png";
 import DesignIcon from "../Assets/design.png";
+import AllData from "../data";
 
 const Cardformat = () => {
   const classes = useStyles();
+  const [estimate, setEstimate] = useState(0);
+  const [price, setPrice] = useState({
+    desktop: 10000,
+    mobile: 8000,
+    other: 5000,
+    frontend: 8000,
+    backend: 10000,
+    design: 5000,
+
+  });
+  const handleEstimator = (cost) => {
+    setEstimate(prev => prev + cost)
+
+
+  };
+
+
+
+
   return (
     <div className={classes.root}>
       <div >
@@ -18,27 +38,28 @@ const Cardformat = () => {
         <h5>Fill out this simple form. Our team will contact you promptly to discuss      next steps.
         </h5>
       </div>
+
       <div className={classes.cardSection}>
         <div>
           <h2>what is your device of your project?  </h2>
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} />
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="desktop" value={estimate.desktop} onChange={() => handleEstimator(estimate.desktop)} />
             <img src={DesktopIcon} alt="dsktop icon " />
             <h3>Desktop</h3>
           </Card>
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} />
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="mobile" value={estimate.mobile} onChange={handleEstimator} />
             <img src={MobileIcon} alt="mobile icon " />
             <h3>Mobile</h3>
           </Card>
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} />
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="other" value={estimate.other} onChange={handleEstimator} />
             <img src={OtherIcon} alt="other icons " />
             <h3>Other</h3>
           </Card>
@@ -50,27 +71,27 @@ const Cardformat = () => {
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} />
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="frontend" value={estimate.frontend} onChange={handleEstimator} />
             <img src={FrontendIcon} alt="dsktop icon " />
             <h3>Frontend</h3>
           </Card>
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} />
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="backend" value={estimate.backend} onChange={handleEstimator} />
             <img src={BackendIcon} alt="mobile icon " />
             <h3>Backend</h3>
           </Card>
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} />
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="design" value={estimate.design} onChange={handleEstimator} />
             <img src={DesignIcon} alt="other icons " />
             <h3>Design</h3>
           </Card>
         </div>
       </div>
-
+      <button onClick={() => handleEstimator(price.desktop)}>ok</button>
     </div>
   )
 };

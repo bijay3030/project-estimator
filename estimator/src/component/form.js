@@ -8,12 +8,11 @@ import validate from './validateInfo';
 const Form = () => {
   const { handleChange, values, handleEstimate, errors } = useForm(validate);
   const classes = useStyles();
-  const [desktop, setDesktop] = useState();
-  const [mobile, setMobile] = useState();
-  const [other, setOther] = useState();
-  const [frontend, setFrontend] = useState();
-  const [backend, setBackend] = useState();
-  const [design, setDesign] = useState();
+  const [budget, setBudget] = useState('');
+
+  const handleSubmit = () => {
+
+  }
   return (
     <div>
       <div>
@@ -44,14 +43,14 @@ const Form = () => {
               onChange={handleChange} />
             {errors.phonenumber && <p>{errors.phonenumber}</p>}
             <TextField
-              name="budget" label="Budget" type="text" variant="outlined" margin="normal" value={values.budget}
-              onChange={handleChange} />
+              name="budget" label="Budget" type="text" variant="outlined" margin="normal" value={budget}
+              onChange={e => setBudget(e.target.value)} />
             {errors.budget && <p>{errors.budget}</p>}
             <TextField
               name="description" label="Short Description of project " type="text" variant="outlined" margin="normal" value={values.description}
               onChange={handleChange} />
             {errors.description && <p>{errors.description}</p>}
-            <button>Estimate </button>
+            <button onClick={handleSubmit}>Estimate </button>
           </div>
         </div>
       </form>
@@ -60,6 +59,9 @@ const Form = () => {
 
 }
 
+/**
+ * 
+ */
 const useStyles = makeStyles((theme) => ({
   formsection2: {
     display: "flex",
