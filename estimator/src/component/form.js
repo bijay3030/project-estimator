@@ -10,16 +10,13 @@ const Form = () => {
   const classes = useStyles();
   const [budget, setBudget] = useState('');
 
-  const handleSubmit = () => {
-
-  }
   return (
     <div>
       <div>
         <h2>Fill the form and get an estimate. </h2>
       </div>
 
-      <form onSubmit={handleEstimate}>
+      <form >
         <div className={classes.formsection1}>
           <div className={classes.formsection2}>
             <TextField required name="email" label="Email" type="email" variant="outlined" margin="normal"
@@ -50,7 +47,7 @@ const Form = () => {
               name="description" label="Short Description of project " type="text" variant="outlined" margin="normal" value={values.description}
               onChange={handleChange} />
             {errors.description && <p>{errors.description}</p>}
-            <button onClick={handleSubmit}>Estimate </button>
+            <button >Estimate </button>
           </div>
         </div>
       </form>
