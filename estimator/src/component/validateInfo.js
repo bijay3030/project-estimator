@@ -19,9 +19,7 @@ export default function validateInfo(values) {
     errors.phonenumber = 'PhoneNumber required';
   }
 
-  if (!values.budget) {
-    errors.budget = 'Budget required';
-  }
+
 
   if (!values.description) {
     errors.description = 'description required';

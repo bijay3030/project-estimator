@@ -22,6 +22,10 @@ const Form = () => {
 
   const handleBudget = (e) => {
     setBudget((e.target.value));
+    if (!values.budget) {
+      errors.budget = "budget required";
+    }
+
   }
 
   const handleChange = e => {
@@ -35,7 +39,9 @@ const Form = () => {
   const handleEstimate = e => {
     e.preventDefault();
     setErrors(validate(values));
-    console.log("hell0", budget);
+    console.log("ok", budget);
+    console.log("hi", estimate)
+    console.log("hell0", isSubmitting);
     setIsSubmitting(budget - estimate);
   };
 
@@ -76,7 +82,7 @@ const Form = () => {
               onChange={handleChange} />
             {errors.description && <p>{errors.description}</p>}
             <button onClick={handleEstimate} className={classes.button} >Estimate </button>
-            {Math.abs(isSubmitting) === 0 ? <p>Your estimation for the project is {estimate}</p> : <p> You are out of budget for this project </p>}
+            {Math.sign(isSubmitting) === 1 ? <p>Your estimation for the project is {estimate}</p> : <p> You are out of budget for this project </p>}
           </div>
         </div>
       </form>
