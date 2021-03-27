@@ -7,36 +7,12 @@ import validate from './validateInfo';
 import Card from './card';
 
 const Form = () => {
+  const { handleChange, values, handleEstimate, errors } = useForm(validate);
   const classes = useStyles();
-  const [budget, setBudget] =
-    useState(0);
-  const [values, setValues] = useState({
-    email: '',
-    firstname: '',
-    lastname: '',
-    budget: 0,
-    phonenumber: '',
-    description: '',
-  });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(0);
+  const [budget, setBudget] = useState(0);
   const handleBudget = (e) => {
     setBudget(e.target.value);
   }
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value
-    });
-  };
-
-  const handleEstimate = e => {
-    e.preventDefault();
-    setErrors(validate(values));
-    setIsSubmitting();
-  };
 
   return (
     <div>

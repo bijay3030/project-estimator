@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import FrontendIcon from "../Assets/front-end.png";
 import BackendIcon from "../Assets/backenddd.png";
 import DesignIcon from "../Assets/design.png";
+import From from './form';
+import Form from './form';
 
 
 const Cardformat = () => {
@@ -27,7 +29,9 @@ const Cardformat = () => {
 
   const handleEstimator = (e) => {
     setEstimate(prevState => prevState + parseInt(e.target.value, 10));
+
   };
+
 
   return (
     <div className={classes.root}>
@@ -69,26 +73,28 @@ const Cardformat = () => {
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            {/* <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="frontend" value={estimate.frontend} onChange={handleEstimator} /> */}
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="frontend" value={price.frontend} onChange={handleEstimator} />
             <img src={FrontendIcon} alt="dsktop icon " />
             <h3>Frontend</h3>
           </Card>
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            {/* <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="backend" value={estimate.backend} onChange={handleEstimator} /> */}
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="backend" value={price.backend} onChange={handleEstimator} />
             <img src={BackendIcon} alt="mobile icon " />
             <h3>Backend</h3>
           </Card>
         </div>
         <div className={classes.grid}>
           <Card variant="outlined">
-            {/* <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="design" value={estimate.design} onChange={handleEstimator} /> */}
+            <Checkbox inputProps={{ 'aria-label': 'disabled checkbox' }} name="design" value={price.design} onChange={handleEstimator} />
             <img src={DesignIcon} alt="other icons " />
             <h3>Design</h3>
           </Card>
+          {estimate}
         </div>
       </div>
+
     </div>
   )
 };
