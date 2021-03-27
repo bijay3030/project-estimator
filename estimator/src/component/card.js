@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import DesktopIcon from "../Assets/deskktop.png";
@@ -8,13 +8,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import FrontendIcon from "../Assets/front-end.png";
 import BackendIcon from "../Assets/backenddd.png";
 import DesignIcon from "../Assets/design.png";
-import From from './form';
-import Form from './form';
+import { DataContext } from '../Contexts/DataContext';
 
 
 const Cardformat = () => {
   const classes = useStyles();
-  const [estimate, setEstimate] = useState(0);
+  const { setEstimate } = useContext(DataContext);
   const [price, setPrice] = useState({
     desktop: 10000,
     mobile: 8000,
@@ -22,25 +21,20 @@ const Cardformat = () => {
     frontend: 8000,
     backend: 10000,
     design: 5000,
-
-
   });
-
 
   const handleEstimator = (e) => {
     setEstimate(prevState => prevState + parseInt(e.target.value, 10));
 
   };
 
-
   return (
     <div className={classes.root}>
       <div >
         <h1>Get an estimate</h1>
-        <h5>Fill out this simple form. Our team will contact you promptly to discuss      next steps.
+        <h5 className={classes.heading}>Fill out this simple form. Our team will contact you promptly to discussnext steps.
         </h5>
       </div>
-
       <div className={classes.cardSection}>
         <div>
           <h2>what is your device of your project?  </h2>
@@ -91,10 +85,8 @@ const Cardformat = () => {
             <img src={DesignIcon} alt="other icons " />
             <h3>Design</h3>
           </Card>
-          {estimate}
         </div>
       </div>
-
     </div>
   )
 };
@@ -106,17 +98,16 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-
     [theme.breakpoints.down('sm')]: {
-
       flexDirection: "column",
+    },
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: "row",
     },
     [theme.breakpoints.down('md')]: {
       gap: "20px",
       margin: "3%",
-      flexDirection: "row",
     },
-
   },
 
   cardSection2: {
@@ -126,13 +117,13 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: "column",
     },
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.up('sm')]: {
       flexDirection: "row",
+    },
+    [theme.breakpoints.down('md')]: {
       gap: "20px",
       margin: "3%",
     },
-
-
   },
   grid: {
     width: "15.937rem",
@@ -143,6 +134,14 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('md')]: {
       width: "14rem",
+    },
+  },
+  heading: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: "20px"
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: "24px",
     },
   }
 }));
