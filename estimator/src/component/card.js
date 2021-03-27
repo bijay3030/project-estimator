@@ -25,14 +25,13 @@ const Cardformat = () => {
 
   const handleEstimator = (e) => {
     setEstimate(prevState => prevState + parseInt(e.target.value, 10));
-
   };
 
   return (
     <div className={classes.root}>
       <div >
         <h1>Get an estimate</h1>
-        <h5 className={classes.heading}>Fill out this simple form. Our team will contact you promptly to discussnext steps.
+        <h5 className={classes.heading}>Fill out this simple form to get estimated cost for your project.
         </h5>
       </div>
       <div className={classes.cardSection}>
@@ -93,6 +92,7 @@ const Cardformat = () => {
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "5%",
+    fontSize: "1.1em"
   },
   cardSection: {
     display: "flex",
@@ -129,11 +129,10 @@ const useStyles = makeStyles((theme) => ({
     width: "15.937rem",
     marginBottom: "2%",
     [theme.breakpoints.down('sm')]: {
-      width: "21rem",
-      marginLeft: "7%",
+      width: "auto",
     },
     [theme.breakpoints.down('md')]: {
-      width: "14rem",
+      width: "auto",
     },
   },
   heading: {

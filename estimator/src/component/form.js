@@ -21,7 +21,7 @@ const Form = () => {
   const [isSubmitting, setIsSubmitting] = useState(0);
 
   const handleBudget = (e) => {
-    setBudget(e.target.value);
+    setBudget((e.target.value));
   }
 
   const handleChange = e => {
@@ -88,12 +88,18 @@ const useStyles = makeStyles((theme) => ({
   formsection2: {
     display: "flex",
     flexDirection: "column",
-    width: "50%",
     [theme.breakpoints.down('sm')]: {
+      width: "auto",
+      margin: "5%",
+    },
+    [theme.breakpoints.up('sm')]: {
       width: "103%",
       margin: "5%",
     },
-
+    [theme.breakpoints.up('md')]: {
+      width: "65%",
+      margin: "5%",
+    },
   },
   formsection1: {
     display: "flex",
@@ -101,14 +107,15 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: "100%",
     },
+
   },
   name: {
-    width: "47.65%",
+    width: "47.99%",
     marginRight: "2%",
   },
 
   lastname: {
-    width: "47.55%",
+    width: "47.99%",
   },
 
   button: {
